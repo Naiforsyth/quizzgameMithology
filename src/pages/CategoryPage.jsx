@@ -9,7 +9,6 @@ const shuffleArray = array => {
     return newArray.slice(0, 5)
 }
 
-
 export const CategoryPage = () => {
 
     // Leer el parámertro de la URL
@@ -25,7 +24,7 @@ export const CategoryPage = () => {
         questions.filter(question => question.category === category)
     )
     const [indexQuestion, setIndexQuestion] = useState(0)
-    const [activeQuizz, setActiveQuizz] = useState(false)
+    const [activeQuiz, setActiveQuiz] = useState(false)
 
     useEffect(() => {
         const newQuestions = shuffleArray(questionsFiltered)
@@ -38,13 +37,13 @@ export const CategoryPage = () => {
             className="container flex flex-col items-center justify-center gap-10"
             style={{ height: 'calc(100vh - 5rem' }}
         >
-        {activeQuizz ? (
+        {activeQuiz ? (
             <Question
                 filteredQuestion={questionsFiltered[indexQuestion]}
                 setIndexQuestion={setIndexQuestion}
                 indexQuestion={indexQuestion}
                 questionsFiltered={questionsFiltered}
-                setActiveQuizz={setActiveQuizz}
+                setActiveQuiz={setActiveQuiz}
             />
         ) :(
             <>
@@ -58,7 +57,7 @@ export const CategoryPage = () => {
 
                 <button 
                     className="text-white bg-gray-900 py-2 rounded-lg font-bold px-5 transition-all hover:bg-yellow-500 hover:text-gray-900"
-                    onClick={() =>setActiveQuizz(true)}
+                    onClick={() =>setActiveQuiz(true)}
                 >
                     Iniciar Quizz
                 </button>
